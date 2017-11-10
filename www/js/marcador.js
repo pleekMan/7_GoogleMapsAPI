@@ -19,7 +19,7 @@ marcadorModulo = (function () {
         miMarcador.setMap(mapa);
         setTimeout(function(){
           miMarcador.setAnimation(null);
-        },2000);
+        },4000);
         //debugger;
   }
 
@@ -229,7 +229,7 @@ marcadorModulo = (function () {
     // Marco los lugares cerca de mi posición
   function marcar () {
     borrarMarcadores(marcadores)
-    console.log('lugar: ' + document.getElementById('tipoDeLugar').value)
+    console.log('Tipo de Lugar: ' + document.getElementById('tipoDeLugar').value)
     if (marcadorModulo.existeMiMarcador()) {
       var miPosicion = marcadorModulo.damePosicion()
     } else {

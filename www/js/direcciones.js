@@ -86,7 +86,7 @@ direccionesModulo = (function () {
       draggable: true,
       map: mapa,
       panel: document.getElementById('directions-panel-summary'),
-      suppressMarkers: true
+      suppressMarkers: false
     })
   }
 
@@ -97,6 +97,40 @@ direccionesModulo = (function () {
         /* Completar la función calcularYMostrarRutas , que dependiendo de la forma en que el
          usuario quiere ir de un camino al otro, calcula la ruta entre esas dos posiciones
          y luego muestra la ruta. */
+
+         var textDesde = $("#desde").val();
+         var textHasta = $("#hasta").val();
+         console.log("-|| Desde: " + textDesde + "    ======>    Hasta: " + textHasta);
+
+         // Buscar los waypoints definidos por usuario y existentes en el Panel Lugares Intermedios
+         var textWaypointsSeleccionados = $("select#puntosIntermedios").val();
+         console.log(textWaypointsSeleccionados);
+
+         var waypointObjects = [];
+
+         textWaypointsSeleccionados.forEach(function(element) {
+           waypointObjects.push({location: new google.maps.LatLng({lat: parseFloat(element[0]), lng: parseFloat(element[1])})});
+         }, this);
+
+         console.log(waypointObjects);
+         
+
+         var directionsRequest = {
+           origin: textDesde,
+           destination: textHasta,
+           travelMode: "WALKING"
+         }
+
+         servicioDirecciones.route(directionsRequest, callBackDelRuteo);
+
+         function callBackDelRuteo (directionsResult, directionsStatus){
+            if(directionsStatus == "OK"){
+              console.log("-|| Ruteo Valido");
+
+              mostradorDirecciones.setDirections(directionsResult);
+            }
+         }
+        
   }
 
   return {

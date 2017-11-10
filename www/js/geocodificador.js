@@ -19,6 +19,7 @@ geocodificadorModulo = (function () {
       if(status == "OK"){ // Maps llama al metodo geocode llama varias veces. Se debe solo hacer algo si en alguna llamada el status es OK, o google.maps.GeocoderStatus.OK
         var coordenadas = result[0].geometry.location; // Esto devuelve un objeto LatLng 
         funcionALlamar(direccion,coordenadas);
+        streetViewModulo.fijarStreetView(coordenadas);
       }
      });
 

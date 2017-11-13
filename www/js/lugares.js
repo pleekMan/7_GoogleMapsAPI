@@ -15,6 +15,7 @@ lugaresModulo = (function () {
         var autoEnBuscar = new google.maps.places.Autocomplete (document.getElementById("direccion"), {strictBounds: true}); // CONSTRAIN AUTOCOMPLETE STRICTLY TO BOUNDS (LATER DEFINED AND ATTACHED)
         var autoEnDesde = new google.maps.places.Autocomplete (document.getElementById("desde"), {strictBounds: true});
         var autoEnHasta = new google.maps.places.Autocomplete (document.getElementById("hasta"), {strictBounds: true});        
+        var agregar = new google.maps.places.Autocomplete (document.getElementById("agregar"), {strictBounds: true});        
         
         var radioDeBusqueda = new google.maps.Circle( { center: mapa.center, radius: 20000})//, map: mapa });
         //radioDeBusqueda.setMap(mapa); // SET MAP RENDERS/DRAWS THE CIRCLE OVER THE MAP
@@ -23,6 +24,7 @@ lugaresModulo = (function () {
         autoEnBuscar.setBounds(areaDeBusqueda);          
         autoEnDesde.setBounds(areaDeBusqueda);        
         autoEnHasta.setBounds(areaDeBusqueda);
+        agregar.setBounds(areaDeBusqueda);
         
   }
 

@@ -109,7 +109,10 @@ direccionesModulo = (function () {
          var waypointObjects = [];
 
          textWaypointsSeleccionados.forEach(function(element) {
-           waypointObjects.push({location: new google.maps.LatLng({lat: parseFloat(element[0]), lng: parseFloat(element[1])})});
+           var lati = parseFloat(element.split(',')[0]);
+           var long = parseFloat(element.split(',')[1]);
+           
+           waypointObjects.push({location: new google.maps.LatLng({lat: lati, lng: long})}); // HACEMOS UN DirectionsWaypoint object (con la propiedad "location")
          }, this);
 
          console.log(waypointObjects);
@@ -118,6 +121,7 @@ direccionesModulo = (function () {
          var directionsRequest = {
            origin: textDesde,
            destination: textHasta,
+           waypoints: waypointObjects,
            travelMode: "WALKING"
          }
 
